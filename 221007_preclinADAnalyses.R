@@ -2837,7 +2837,14 @@ for (i in 1:length(models)){
 
 
 # Subset to comparisons in which mean Empirical is greater than mean Null
-varimp.tests2 <- subset(varimp.tests, Mean.Emp > Mean.Null)
+numvars <- c('P.val', 'Mean.Emp', 'Mean.Null')
+
+varimp.tests[, numvars] <- lapply(varimp.tests[,numvars], as.numeric)
+
+varimp.tests <- varimp.tests %>%
+  mutate(Diff = Mean.Emp - Mean.Null)
+  
+varimp.tests2 <- subset(varimp.tests, Diff > 0)
 
 # Apply BH (FDR) correction for multiple hypothesis testing and subset to 
 # significant comparisons. Add star nomenclature.
