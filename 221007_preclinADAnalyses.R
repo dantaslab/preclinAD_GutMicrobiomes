@@ -38,7 +38,7 @@ library(egg)          #v0.4.5
 library(purrr)        #v0.3.4
 library(broom)        #v1.0.1
 
-setwd('C:/Users/calfr/OneDrive/Documents/')
+
 
 
 
